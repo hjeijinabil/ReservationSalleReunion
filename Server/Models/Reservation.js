@@ -1,0 +1,26 @@
+
+const mongoose = require("mongoose");
+
+const reservationSchema = mongoose.Schema({
+        start : String,
+        end : String,
+        date : Date,
+        salleReunion: {
+            type: mongoose.Schema.ObjectId,
+            ref: 'SalleReunion',
+            required: true,
+          },
+        user: {
+            type: mongoose.Schema.ObjectId,
+            ref: 'User',
+            required: true,
+          },
+},
+
+);
+
+
+// create reservation model
+const Reservation = mongoose.model("Reservation", reservationSchema);
+// export fichier reservation
+module.exports = Reservation;
